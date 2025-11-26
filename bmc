@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Advertising & Media Agency Landing Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #0b0c10;
+      color: #f7f7f7;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Top bar (optional) */
+    .topbar {
+      font-size: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: #050608;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .topbar-left,
+    .topbar-right {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      opacity: 0.8;
+    }
+
+    .topbar-select {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #f7f7f7;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+
+    /* Navbar */
+    .navbar {
+      padding: 16px 0;
+      background: #0b0c10;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 18px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #ff6b3d, #ffb347);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      opacity: 0.8;
+    }
+
+    .nav-links a:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      opacity: 1;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .btn {
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      color: #f7f7f7;
+    }
+
+    .btn-outline {
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff6b3d, #ffb347);
+      color: #0b0c10;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 48px 0 40px;
+      background: radial-gradient(circle at top left, #1a1d2b, #050608);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.85;
+      margin-bottom: 14px;
+    }
+
+    .hero-tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #34d399;
+    }
+
+    .hero-title {
+      font-size: 34px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #ff6b3d, #ffb347);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: 22px;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .hero-note {
+      font-size: 12px;
+      opacity: 0.7;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+      font-size: 12px;
+    }
+
+    .metric {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.03), transparent);
+    }
+
+    .metric-value {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .metric-label {
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+
+    .hero-media-card {
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.9));
+      padding: 20px;
+    }
+
+    .hero-media-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      font-size: 13px;
+    }
+
+    .hero-media-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    .media-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .media-row-label {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .media-row-title {
+      font-weight: 500;
+      font-size: 12px;
+    }
+
+    .media-row-tag {
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    .media-row-price {
+      font-size: 11px;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    /* Section base */
+    section {
+      padding: 40px 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      opacity: 0.75;
+      max-width: 420px;
+    }
+
+    /* Trending media */
+    .trending-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.96));
+      padding: 14px;
+      font-size: 13px;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      opacity: 0.75;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .card-title {
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .card-caption {
+      font-size: 12px;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+
+    .card-footer {
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 0.85;
+    }
+
+    /* Media icons grid */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+
+    .media-item {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.5);
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .media-item-title {
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .media-item-meta {
+      opacity: 0.7;
+    }
+
+    /* Partner section */
+    .partner-section {
+      display: grid;
+      gap: 24px;
+    }
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .partner-logo {
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      opacity: 0.75;
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .faq-intro {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    details {
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details[open] {
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.94));
+    }
+
+    details p {
+      font-size: 12px;
+      opacity: 0.8;
+      margin-top: 6px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      padding: 18px 0 26px;
+      font-size: 12px;
+      opacity: 0.75;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .hero-media-card {
+        order: -1;
+      }
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none; /* For simplicity; in real site convert to mobile menu */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span>AI Media Planner</span>
+        <span>• Instant campaign estimates</span>
+      </div>
+      <div class="topbar-right">
+        <select class="topbar-select">
+          <option>INR (₹)</option>
+          <option>USD ($)</option>
+          <option>AED (د.إ)</option>
+        </select>
+        <span>Login</span>
+        <span>Cart</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <div class="logo">
+        <div class="logo-mark"></div>
+        <span>Media Agency</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#">Radio</a>
+        <a href="#">Cinema</a>
+        <a href="#">Digital</a>
+        <a href="#">Transit</a>
+        <a href="#">Outdoor</a>
+        <a href="#">TV</a>
+        <a href="#">Influencer</a>
+        <a href="#">Corporate Gifting</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline">View Campaigns</button>
+        <button class="btn btn-primary">Start a Campaign</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          <span>Offline • Digital • Sports • Gifting</span>
+        </div>
+        <h1 class="hero-title">
+          We build <span>media strategies</span> that actually move your brand.
+        </h1>
+        <p class="hero-subtitle">
+          Plan and book campaigns across radio, cinema, outdoor, digital, influencer, and more—on a single platform with transparent pricing and expert support.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary">Get a Free Media Plan</button>
+          <button class="btn btn-outline">Talk to an Expert</button>
+        </div>
+        <p class="hero-note">Trusted by 3,000+ brands across finance, auto, real estate, healthcare, and startups.</p>
+
+        <div class="hero-metrics">
+          <div class="metric">
+            <div class="metric-value">3,000+</div>
+            <div class="metric-label">Happy Clients</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">5,00,000+</div>
+            <div class="metric-label">Media Options</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">1,50,000+</div>
+            <div class="metric-label">Campaigns Executed</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-media-card">
+        <div class="hero-media-header">
+          <span>Trending media slots</span>
+          <span style="font-size:11px;opacity:0.7;">Updated in real time</span>
+        </div>
+        <div class="hero-media-list">
+          <div class="media-row">
+            <div class="media-row-label">
+              <span class="media-row-title">SEO & Performance</span>
+              <span class="media-row-tag">Always-on digital growth</span>
+            </div>
+            <div class="media-row-price">
+              <div>Starting from</div>
+              <strong>₹XX,XXX</strong>
+            </div>
+          </div>
+          <div class="media-row">
+            <div class="media-row-label">
+              <span class="media-row-title">Google Ads</span>
+              <span class="media-row-tag">Search & display campaigns</span>
+            </div>
+            <div class="media-row-price">
+              <div>Starting from</div>
+              <strong>₹XX,XXX</strong>
+            </div>
+          </div>
+          <div class="media-row">
+            <div class="media-row-label">
+              <span class="media-row-title">Airport DOOH</span>
+              <span class="media-row-tag">Premium traveler audience</span>
+            </div>
+            <div class="media-row-price">
+              <div>Starting from</div>
+              <strong>₹XX,XXX</strong>
+            </div>
+          </div>
+          <div class="media-row">
+            <div class="media-row-label">
+              <span class="media-row-title">Metro & Transit</span>
+              <span class="media-row-tag">Daily commuter impact</span>
+            </div>
+            <div class="media-row-price">
+              <div>Starting from</div>
+              <strong>₹XX,XXX</strong>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Trending media section -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Trending media picks</h2>
+          <p class="section-subtitle">High-performing options brands are booking right now. Use these as a starting point for your next campaign.</p>
+        </div>
+        <button class="btn btn-outline">View all media</button>
+      </div>
+
+      <div class="trending-grid">
+        <article class="card">
+          <div class="card-tag">Digital</div>
+          <h3 class="card-title">SEO & Performance Marketing</h3>
+          <p class="card-caption">Scale your brand with intent-driven traffic and measurable ROI.</p>
+          <div class="card-footer">
+            <span>From ₹XX,XXX</span>
+            <span>View details →</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-tag">Digital</div>
+          <h3 class="card-title">Google Search & Display Ads</h3>
+          <p class="card-caption">Capture demand in search and build awareness with display inventory.</p>
+          <div class="card-footer">
+            <span>From ₹XX,XXX</span>
+            <span>View details →</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-tag">Outdoor</div>
+          <h3 class="card-title">Airport Advertising</h3>
+          <p class="card-caption">Premium visibility to business and leisure travelers in key hubs.</p>
+          <div class="card-footer">
+            <span>From ₹XX,XXX</span>
+            <span>View details →</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-tag">Transit</div>
+          <h3 class="card-title">Metro & Cab Branding</h3>
+          <p class="card-caption">Stay top-of-mind with high-frequency urban commute impressions.</p>
+          <div class="card-footer">
+            <span>From ₹XX,XXX</span>
+            <span>View details →</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Media category grid -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">What kind of media are you exploring?</h2>
+          <p class="section-subtitle">
+            Pick a channel and dive deeper into coverage, formats, and pricing. Mix multiple formats for a full-funnel plan.
+          </p>
+        </div>
+      </div>
+
+      <div class="media-grid">
+        <div class="media-item">
+          <span class="media-item-title">Radio</span>
+          <span class="media-item-meta">900+ stations • pan India</span>
+        </div>
+        <div class="media-item">
+          <span class="media-item-title">Cinema</span>
+          <span class="media-item-meta">10,000+ screens • multiplex & single</span>
+        </div>
+        <div class="media-item">
+          <span class="media-item-title">Outdoor</span>
+          <span class="media-item-meta">1,00,000+ sites • billboards, kiosks, gantries</span>
+        </div>
+        <div class="media-item">
+          <span class="media-item-title">Transit</span>
+          <span class="media-item-meta">200+ formats • metro, cabs, buses</span>
+        </div>
+        <div class="media-item">
+          <span class="media-item-title">Television</span>
+          <span class="media-item-meta">500+ channels • regional & national</span>
+        </div>
+        <div class="media-item">
+          <span class="media-item-title">Digital</span>
+          <span class="media-item-meta">3,500+ platforms • performance & branding</span>
+        </div>
+        <div class="media-item">
+          <span class="media-item-title">Influencer</span>
+          <span class="media-item-meta">10,000+ creators • all niches</span>
+        </div>
+        <div class="media-item">
+          <span class="media-item-title">Corporate Gifting</span>
+          <span class="media-item-meta">4,500+ curated gift options</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Perfect partner + clientele -->
+  <section>
+    <div class="container partner-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Your end-to-end advertising partner</h2>
+          <p class="section-subtitle">
+            From strategy and media planning to buying, execution, and reporting—we manage every layer so your team can focus on product and growth.
+          </p>
+        </div>
+        <button class="btn btn-outline">About the agency</button>
+      </div>
+
+      <div class="partner-grid">
+        <div class="partner-logo">Finance</div>
+        <div class="partner-logo">Real Estate</div>
+        <div class="partner-logo">Automotive</div>
+        <div class="partner-logo">Healthcare</div>
+        <div class="partner-logo">Education</div>
+        <div class="partner-logo">Technology</div>
+        <div class="partner-logo">FMCG</div>
+        <div class="partner-logo">Startups</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">FAQs</h2>
+          <p class="section-subtitle">A few quick answers to common questions about media planning and advertising with us.</p>
+        </div>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-intro">
+          <p>
+            We help brands navigate both online and offline channels with a single team, single brief, and a single point of accountability.
+            Whether you’re a local brand or a national player, we’ll shape the right media mix for your budget and goals.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>What does a media planning & buying agency do?</summary>
+            <p>
+              We identify the best channels, formats, and placements to reach your audience, negotiate rates, and manage releases so your campaign delivers maximum impact for every rupee spent.
+            </p>
+          </details>
+          <details>
+            <summary>Do you manage both online and offline campaigns?</summary>
+            <p>
+              Yes. We plan and execute campaigns across digital platforms (search, social, programmatic) as well as traditional media like radio, print, outdoor, cinema, and on-ground activations.
+            </p>
+          </details>
+          <details>
+            <summary>Why choose a single agency instead of multiple vendors?</summary>
+            <p>
+              With one partner, you get a unified strategy, consistent messaging, consolidated reporting, and better rate leverage across channels, instead of fragmented efforts.
+            </p>
+          </details>
+          <details>
+            <summary>How do I stay updated on new advertising trends?</summary>
+            <p>
+              Our team shares regular insights, recommendations, and performance reviews. We also keep you posted on new formats, inventories, and category-specific opportunities.
+            </p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2025 Media Agency. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
